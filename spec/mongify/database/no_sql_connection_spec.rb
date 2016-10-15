@@ -95,7 +95,7 @@ describe Mongify::Database::NoSqlConnection do
 
     context "select_rows" do
       it "should return all records" do
-        @collection.should_receive(:find).with(no_args).and_return([])
+        @collection.should_receive(:find).with(any_args).and_return([])
         @mongodb_connection.select_rows('users')
       end
     end
@@ -103,7 +103,7 @@ describe Mongify::Database::NoSqlConnection do
     context "select_by_query" do
       it "should return some records according to a query" do
         query = {"dummy" => true}
-        @collection.should_receive(:find).with(query).and_return([])
+        @collection.should_receive(:find).with(query, anything).and_return([])
         @mongodb_connection.select_by_query('users', query)
       end
     end

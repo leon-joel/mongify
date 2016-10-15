@@ -89,11 +89,16 @@ module Mongify
 
       # Returns a hash of all the rows from the database of a given collection
       def select_rows(collection)
-        db[collection].find
+        db[collection].find({}, {timeout: false}) do |cursor|
+          # make a block in order to set timeout for cursor. (Could not set timeout without block.)
+          return cursor
+        end
       end
 
       def select_by_query(collection, query)
-        db[collection].find(query)
+        db[collection].find(query, {timeout: false}) do |cursor|
+          return cursor
+        end
       end
 
       # Inserts into the collection a given row

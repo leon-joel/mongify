@@ -2,22 +2,28 @@ $:.push File.expand_path("../lib", __FILE__)
 require "mongify/version"
 
 Gem::Specification.new do |s|
-  s.name        = "mongify"
+  s.name        = "mongify-leon"
   s.version     = Mongify::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Andrew Kalek"]
+  s.authors     = ["Andrew Kalek (Leon Joel edited.)"]
   s.email       = ["andrew.kalek@anlek.com"]
   s.homepage    = "http://mongify.com"
+  s.license     = 'MIT'
   s.summary     = %q{Translate your SQL data to MongoDB with ease}
   s.description = %q{Mongify allows you to map your sql data into a mongodb document database with a simple DSL.}
   s.required_ruby_version = ">= 1.8.7"
 
-  s.add_dependency('activerecord', ">= 4.2")
-  s.add_dependency('activesupport', ">= 4.2")
-  s.add_dependency('mongo', ">= 1.10.2")
-  s.add_dependency('bson', ">= 1.10.2")
-  s.add_dependency('bson_ext', ">= 1.10.2") unless RUBY_PLATFORM == 'java'
-  s.add_dependency('highline', '>= 1.6.1')
+  s.add_dependency('activerecord', "~> 4.2")
+  s.add_dependency('activesupport', "~> 4.2")
+  s.add_dependency('mongo', "~> 1.10")
+  s.add_dependency('bson', "~> 1.10")
+  s.add_dependency('bson_ext', "~> 1.10") unless RUBY_PLATFORM == 'java'
+
+  # s.add_dependency('mongo', "~> 2.3.0")   # 2.3 has been changed much from 1.x.
+  # s.add_dependency('bson', "~> 4.1")
+  # # s.add_dependency('bson_ext', "~> 1.12.5") unless RUBY_PLATFORM == 'java'  # bson4 included bson_ext.
+
+  s.add_dependency('highline', '~> 1.6')
 
 
   s.add_development_dependency('rspec', '~> 2.0')
